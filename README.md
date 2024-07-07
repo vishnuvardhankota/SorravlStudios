@@ -1,6 +1,6 @@
 # sorravlstudios
 
-A new Flutter project.
+Sorravl Studios is a pioneering software development company dedicated to creating and publishing innovative applications. Our mission is to build a diverse portfolio of high-quality apps that cater to the needs and desires of users worldwide.
 
 ## Getting Started
 
