@@ -83,29 +83,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             height: 7,
                           ),
                           bodytext(companyDescription, screenWidth, context)
-                          // seperateRichText(vision, false, screenWidth, context),
-                          // const SizedBox(
-                          //   height: 7,
-                          // ),
-                          // seperateRichText(
-                          //     firstProject, false, screenWidth, context),
-                          // const SizedBox(
-                          //   height: 7,
-                          // ),
-                          // Text("Company Focus",
-                          //     style: context.bodyLarge
-                          //         .copyWith(fontWeight: FontWeight.bold)
-                          //         .copyWith(color: Colors.blue)),
-                          // Padding(
-                          //   padding: const EdgeInsets.only(left: 10),
-                          //   child: seperateRichText(
-                          //       focus1, false, screenWidth, context),
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.only(left: 10),
-                          //   child: seperateRichText(
-                          //       focus2, false, screenWidth, context),
-                          // ),
                         ],
                       )));
             }));
@@ -273,25 +250,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       appBar: topTabBar(screenWidth, path: widget.path!, context, true),
       body: SizedBox(
         width: screenWidth,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              bannerWidget(screenWidth),
-              companyDetailsWidget(screenWidth),
-              const SizedBox(height: 50),
-              Text(
-                "Projects",
-                style: screenWidth > mobileWidth
-                    ? context.headlineLarge
-                        .copyWith(fontWeight: FontWeight.bold)
-                        .copyWith(color: Colors.green)
-                    : context.titleLarge
-                        .copyWith(fontWeight: FontWeight.bold)
-                        .copyWith(color: Colors.green),
-              ),
-              myProjects(screenWidth),
-              bottomWidget(screenWidth, context)
-            ],
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                bannerWidget(screenWidth),
+                companyDetailsWidget(screenWidth),
+                const SizedBox(height: 50),
+                Text(
+                  "Projects",
+                  style: screenWidth > mobileWidth
+                      ? context.headlineLarge
+                          .copyWith(fontWeight: FontWeight.bold)
+                          .copyWith(color: Colors.green)
+                      : context.titleLarge
+                          .copyWith(fontWeight: FontWeight.bold)
+                          .copyWith(color: Colors.green),
+                ),
+                myProjects(screenWidth),
+                bottomWidget(screenWidth, context)
+              ],
+            ),
           ),
         ),
       ),

@@ -6,22 +6,46 @@ import 'package:sorravlstudios/widgets/bottom_container.dart';
 import 'package:sorravlstudios/widgets/text.dart';
 import 'package:sorravlstudios/widgets/top_tab_bar.dart';
 
-class AppDetailsPage extends StatelessWidget {
+class AppDetailsPage extends StatefulWidget {
   final String appId;
   const AppDetailsPage({super.key, required this.appId});
 
   @override
+  State<AppDetailsPage> createState() => _AppDetailsPageState();
+}
+
+class _AppDetailsPageState extends State<AppDetailsPage> {
+  ScrollController scrollController = ScrollController();
+  @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     Map<String, dynamic> app =
-        apps.singleWhere((element) => element['appId'] == appId);
+        apps.singleWhere((element) => element['appId'] == widget.appId);
+
+    Widget termandprivacy() {
+      var coloredStyle = context.bodyMedium.copyWith(color: Colors.blue);
+      return Wrap(children: [
+        Text("You can read the FindLove's ", style: context.bodyMedium),
+        InkWell(
+            onTap: () {
+              context.go("/project/${widget.appId}/terms&conditions");
+            },
+            child: Text("Terms and conditions", style: coloredStyle)),
+        Text(", ", style: context.bodyMedium),
+        InkWell(
+            onTap: () {
+              context.go("/project/${widget.appId}/privacy&policy");
+            },
+            child: Text("Privacy Policy", style: coloredStyle))
+      ]);
+    }
 
     Widget wrongProjectId() {
       return Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("There is No Project belongs to'$appId'"),
+          Text("There is No Project belongs to'${widget.appId}'"),
           TextButton(
               onPressed: () {
                 context.go("/");
@@ -123,20 +147,26 @@ class AppDetailsPage extends StatelessWidget {
                     .toList(),
               ),
               headlineText("Why Choose FindLove?", screenWidth, context),
-              bodytext(whyChoose, screenWidth, context)
+              bodytext(whyChoose, screenWidth, context),
+              const SizedBox(height: 20),
+              termandprivacy()
             ],
           ));
     }
 
     Widget body() {
       return Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              appTitle(),
-              description(),
-              bottomWidget(screenWidth, context)
-            ],
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              children: [
+                appTitle(),
+                description(),
+                bottomWidget(screenWidth, context)
+              ],
+            ),
           ),
         ),
       );
@@ -144,7 +174,7 @@ class AppDetailsPage extends StatelessWidget {
 
     return Scaffold(
         appBar: topTabBar(screenWidth, context, false),
-        body: apps.any((element) => element['appId'] == appId)
+        body: apps.any((element) => element['appId'] == widget.appId)
             ? body()
             : wrongProjectId());
   }

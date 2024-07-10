@@ -116,14 +116,17 @@ class CareersPage extends StatelessWidget {
       appBar: topTabBar(screenWidth, path: path!, context, true),
       body: SizedBox(
         width: screenWidth,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              bannerWidget(screenWidth),
-              motivationWidget(screenWidth),
-              jobsWidget(screenWidth),
-              bottomWidget(screenWidth, context)
-            ],
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                bannerWidget(screenWidth),
+                motivationWidget(screenWidth),
+                jobsWidget(screenWidth),
+                bottomWidget(screenWidth, context)
+              ],
+            ),
           ),
         ),
       ),

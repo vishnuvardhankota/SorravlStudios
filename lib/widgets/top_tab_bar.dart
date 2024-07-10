@@ -6,8 +6,9 @@ import 'package:sorravlstudios/provider/theme_provider.dart';
 import 'package:sorravlstudios/theme/theme_extension.dart';
 import 'package:sorravlstudios/widgets/menu_option.dart';
 
-PreferredSize topTabBar(double screenWidth, BuildContext context,
-    bool isOptionsEnabled,{String? path}) {
+PreferredSize topTabBar(
+    double screenWidth, BuildContext context, bool isOptionsEnabled,
+    {String? path}) {
   var themeProvider = Provider.of<ThemeProvider>(context, listen: false);
   var tabBarOptions = [
     ["Home", "/"],
