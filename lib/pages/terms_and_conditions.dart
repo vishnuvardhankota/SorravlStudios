@@ -249,8 +249,7 @@ class FindLoveTermsAndConditions extends StatelessWidget {
                                     text: "Privacy Policy",
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        context
-                                            .go("/project/$appId/privacy&policy");
+                                        context.go("/project/$appId/privacy&policy");
                                       },
                                     style: context.bodyMedium
                                         .copyWith(color: Colors.blue)),
@@ -584,8 +583,9 @@ class FindLoveTermsAndConditions extends StatelessWidget {
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         final Uri emailLaunchUri = Uri(
-                                            scheme: 'mailto', path: contactMail);
-        
+                                            scheme: 'mailto',
+                                            path: contactMail);
+
                                         launchUrl(emailLaunchUri);
                                       },
                                     style: context.bodyMedium

@@ -213,7 +213,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ),
                   InkWell(
-                    onTap: () => context.go("/project/${apps[index]['appId']}"),
+                    onTap: () => context.go('/project/${apps[index]['appId']}'),
                     child: Text(apps[index]['appName'],
                         style: screenWidth > mobileWidth
                             ? context.titleLarge
