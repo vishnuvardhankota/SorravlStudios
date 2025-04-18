@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sorravlstudios/pages/app_details_page.dart';
 import 'package:sorravlstudios/pages/careers_page.dart';
 import 'package:sorravlstudios/pages/contact_page.dart';
+import 'package:sorravlstudios/pages/csae_policy.dart';
 import 'package:sorravlstudios/pages/home_page.dart';
 import 'package:sorravlstudios/pages/privacy_policy.dart';
 import 'package:sorravlstudios/pages/terms_and_conditions.dart';
@@ -64,6 +65,14 @@ class MyApp extends StatelessWidget {
             final appId = state.pathParameters['appId'];
             return NoTransitionPage(
                 child: FindLovePrivacyPolicy(appId: appId!));
+          },
+        ),
+        GoRoute(
+          path: '/project/:appId/csae-policy',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            final appId = state.pathParameters['appId'];
+            return NoTransitionPage(
+                child: FindLoveCSAEPolicy(appId: appId!));
           },
         ),
         GoRoute(

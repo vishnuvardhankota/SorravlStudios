@@ -4,15 +4,15 @@ import 'package:sorravlstudios/widgets/top_tab_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-class FindLoveTermsAndConditions extends StatefulWidget {
+class FindLoveCSAEPolicy extends StatefulWidget {
   final String appId;
-  const FindLoveTermsAndConditions({super.key, required this.appId});
+  const FindLoveCSAEPolicy({super.key, required this.appId});
 
   @override
-  State<FindLoveTermsAndConditions> createState() => _FindLoveTermsAndConditionsState();
+  State<FindLoveCSAEPolicy> createState() => _FindLoveCSAEPolicyState();
 }
 
-class _FindLoveTermsAndConditionsState extends State<FindLoveTermsAndConditions> {
+class _FindLoveCSAEPolicyState extends State<FindLoveCSAEPolicy> {
   String? htmlData;
 
   @override
@@ -22,7 +22,7 @@ class _FindLoveTermsAndConditionsState extends State<FindLoveTermsAndConditions>
   }
 
   Future<void> loadHtml() async {
-    final data = await rootBundle.loadString('assets/html/terms&conditions.html');
+    final data = await rootBundle.loadString('assets/html/csae_policy.html');
     setState(() {
       htmlData = data;
     });

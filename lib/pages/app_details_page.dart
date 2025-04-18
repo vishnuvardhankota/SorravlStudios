@@ -36,7 +36,13 @@ class _AppDetailsPageState extends State<AppDetailsPage> {
             onTap: () {
               context.go("/project/${widget.appId}/privacy&policy");
             },
-            child: Text("Privacy Policy", style: coloredStyle))
+            child: Text("Privacy Policy", style: coloredStyle)),
+        Text(", ", style: context.bodyMedium),
+        InkWell(
+            onTap: () {
+              context.go("/project/${widget.appId}/csae-policy");
+            },
+            child: Text("CSAE Policy", style: coloredStyle))
       ]);
     }
 
